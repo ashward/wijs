@@ -12,6 +12,9 @@ is a small library to provide a declarative, widgetised UI for Javascript. It is
 currently based on the MooTools [http://mootools.net/] framework, but I plan to
 remove the dependency in the future so it will work happily with any framework.
 
+I also would like to provide a compiler so that the xml doesn't have to be
+loaded dynamically for each wijit. But that's in the (near) future :)
+
 When dynamically creating a ui within javascript for a recent project there 
 seemed to be two ways to go:
 
@@ -39,7 +42,7 @@ There are a couple really cool things which are the raison d'etre of WiJS:
 
 ## Note: Experimental Software
 
-I knocked this up in a few hours, have only tried it on Google Chrome, and 
+I knocked this up in a few hours, have only tried it on Google Chrome and FF 10.
 
 ## Usage
 For each wijit you need two things: an XML file and a JS class.
@@ -91,5 +94,3 @@ var Example = new Class({
 	},
 });
 ````
-
-A couple of points to note here:
