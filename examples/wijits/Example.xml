@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wijs:wij xmlns:wijs="http://github.com/ashward/wijs/2012" xmlns="http://www.w3.org/1999/xhtml">
+	<h1 wijs:field="header">This is an example</h1>
+	<wijs:wijit wijs:name="ButtonWijit" wijs:field="firstButton" test="This is a test" />
+	<wijs:wijit wijs:name="ButtonWijit" wijs:field="secondButton" test="This is also a test" />
+</wijs:wij>

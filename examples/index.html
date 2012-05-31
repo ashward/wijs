@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<script src="lib/mootools-core-1.4.5-full-compat-yc.js"></script>
+<script src="../src/wijs.js"></script>
+<style type="text/css">
+h1 {
+	font-size: 200%;
+}
+</style>
+<script type="text/javascript">
+	var Example = new Class({
+		Implements: [Wijs.Wij, Options],
+		options: {},
+		
+		initialize: function(options) {
+			this.setOptions(options);
+			this.bindWij("Example");
+		},
+		
+		wijReady: function() {
+			$(this.fields.header).set("text", "Is Dave there? This is a dynamic header now, Dave");
+			
+			$(this.fields.firstButton).addEvent("click", function() {
+				alert("First Button Clicked");
+			});
+			
+			$(this.fields.secondButton).addEvent("click", function() {
+				alert("Second Button Clicked");
+			});
+		},
+	});
+	
+	var ButtonWijit = new Class({
+		Implements: [Wijs.Wij, Options],
+		options: {},
+		
+		initialize: function(options) {
+			this.setOptions(options);
+			this.bindWij("ButtonWijit");
+		},
+		
+		wijReady: function() {
+			$(this.fields.button).set('text', this.options.test);
+		}
+	});
+	
+	$(document).addEvent("domready", function() {
+		var wij = new Example();
+		
+		$('main').grab(wij);
+	});
+	
+</script>
+</head>
+<body>
+	<h1>Rubbish Wijs Example</h1>
+<div id="main"></div>
+</body>
+</html>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wijs:wij xmlns:wijs="http://github.com/ashward/wijs/2012" xmlns="http://www.w3.org/1999/xhtml">
+	<p>This is a button:
+		<button wijs:field="button"></button>
+	</p>
+</wijs:wij>
