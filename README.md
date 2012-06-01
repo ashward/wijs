@@ -3,8 +3,8 @@
 Author: Ashley Ward
 Version: 0.0.1-experimental
 
-Note that this is just experimental at the moment and is *NOT PRODUCTION READY*
-- not by a long shot!!! (But feel free to make it better and send me a pull
+Note that this is just experimental at the moment and is *NOT PRODUCTION READY* -
+not by a long shot!!! (But feel free to make it better and send me a pull
 request!)
 
 WiJS (which I think might be pronounced widges, like fridges, midges or bridges)
