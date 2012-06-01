@@ -129,4 +129,5 @@ instance of the "Example" wijit into the page)
 * Be able to compile all the xml files into one so that the browser isn't
 downloading one file for each wijit.
 * Make it work on < DOM Level 2 browsers (currently using importNode)
-* Current all wijits are wrapped in a div - would be great if this wasn't so.
+* Currently all wijits are wrapped in a div - would be great if this wasn't so.
+* Remove dependency on mootools
