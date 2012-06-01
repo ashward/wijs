@@ -132,3 +132,4 @@ downloading one file for each wijit.
 * Make it work on < DOM Level 2 browsers (currently using importNode)
 * Currently all wijits are wrapped in a div - would be great if this wasn't so.
 * Remove dependency on mootools
+* Generally make it less sucky and more usable
