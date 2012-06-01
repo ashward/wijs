@@ -18,8 +18,8 @@ loaded dynamically for each wijit. But that's in the (near) future :)
 When dynamically creating a ui within javascript for a recent project there 
 seemed to be two ways to go:
 
-1 Building it programatically with the DOM.
-2 Shoving it into the DOM in one chunk with innerHTML.
+1. Building it programatically with the DOM.
+2. Shoving it into the DOM in one chunk with innerHTML.
 
 It's nice to do it using method 2 above as it's very concise and easy to see
 the structure of the html but then not quite so easy to pick out certain
