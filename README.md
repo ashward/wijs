@@ -1,7 +1,7 @@
 # WiJS
 
 Author: Ashley Ward
-Version: 0.0.1-veryalpha
+Version: 0.0.1-experimental
 
 Note that this is just experimental at the moment and is *NOT PRODUCTION READY*
 - not by a long shot!!! (But feel free to make it better and send me a pull
@@ -50,47 +50,83 @@ For each wijit you need two things: an XML file and a JS class.
 The best way to demonstrate is with a simple example where we define two
 wijits.
 
-For a widget named "Example"
+For a widget named "Example":
 
 ### Example.xml
 ````xml
 <?xml version="1.0" encoding="UTF-8"?>
 <wijs:wij xmlns:wijs="http://github.com/ashward/wijs/2012" xmlns="http://www.w3.org/1999/xhtml">
 	<h1 wijs:field="header">This is an example</h1>
-	<wij:wijit wij:name="ButtonWijit" wijs:field="firstButton" test="This is a test" />
-	<wij:wijit wij:name="ButtonWijit" wijs:field="secondButton" test="This is also a test" />
+	<wijs:wijit wijs:name="ButtonWijit" wijs:field="firstButton" test="This is a test" />
+	<wijs:wijit wijs:name="ButtonWijit" wijs:field="secondButton" test="This is also a test" />
 </wijs:wij>
 ````
+
+The "Example" wijit includes two instances of "ButtonWijit":
 
 ### ButtonWijit.xml
 ````xml
 <?xml version="1.0" encoding="UTF-8"?>
-<wijs:wijs xmlns:wij="http://github.com/ashward/wijs/2012" xmlns="http://www.w3.org/1999/xhtml">
+<wijs:wij xmlns:wijs="http://github.com/ashward/wijs/2012" xmlns="http://www.w3.org/1999/xhtml">
 	<p>This is a button:
 		<button wijs:field="button"></button>
 	</p>
 </wijs:wij>
 ````
 
+And here's the Javascrip which defines the wijit classes (and inserts an
+instance of the "Example" wijit into the page)
+
 ### JavaScript
 ````javascript
-var Example = new Class({
-	Implements: [Wijs.Wij, Options],
-	options: {},
+	var Example = new Class({
+		Implements: [Wijs.Wij, Options],
+		options: {},
+		
+		initialize: function(options) {
+			this.setOptions(options);
+			this.bindWij("Example");
+		},
+		
+		wijReady: function() {
+			$(this.fields.header).set("text", "Is Dave there? This is a dynamic header now, Dave");
+			
+			$(this.fields.firstButton).addEvent("click", function() {
+				alert("First Button Clicked");
+			});
+			
+			$(this.fields.secondButton).addEvent("click", function() {
+				alert("Second Button Clicked");
+			});
+		},
+	});
 	
-	initialize: function(options) {
-		this.setOptions(options);
-		this.bind("Example");
+	var ButtonWijit = new Class({
+		Implements: [Wijs.Wij, Options],
+		options: {},
 		
-		$(this.fields.header).set("text", "This is a dynamic header now");
+		initialize: function(options) {
+			this.setOptions(options);
+			this.bindWij("ButtonWijit");
+		},
 		
-		$(this.fields.firstButton).addEvent("click", function() {
-			alert("First Button Clicked");
-		});
+		wijReady: function() {
+			$(this.fields.button).set('text', this.options.test);
+		}
+	});
+	
+	$(document).addEvent("domready", function() {
+		// Create an instance of the Example wijit
+		var wij = new Example();
 		
-		$(this.fields.secondButton).addEvent("click", function() {
-			alert("Second Button Clicked");
-		});
-	},
-});
+		// Insert it into the #main element in the page
+		$('main').grab(wij);
+	});
 ````
+
+## Improvements
+
+* Be able to compile all the xml files into one so that the browser isn't
+downloading one file for each wijit.
+* Make it work on < DOM Level 2 browsers (currently using importNode)
+* Current all wijits are wrapped in a div - would be great if this wasn't so.

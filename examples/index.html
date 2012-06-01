@@ -45,11 +45,13 @@ h1 {
 		wijReady: function() {
 			$(this.fields.button).set('text', this.options.test);
 		}
-	});
+	});	
 	
 	$(document).addEvent("domready", function() {
+		// Create an instance of the Example wijit
 		var wij = new Example();
 		
+		// Insert it into the #main element in the page
 		$('main').grab(wij);
 	});
 	
